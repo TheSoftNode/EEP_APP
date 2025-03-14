@@ -1,9 +1,11 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ChatPanel from "@/components/EEP/Landing/ChatPanel";
 import { Navbar } from "@/components/EEP_V2/Navbar/Navbar";
 import { Footer } from "@/components/EEP_V2/Footer/Footer";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,15 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
-        <ChatPanel />
-      </body>
-    </html>
+    <Suspense fallback={<div>Loading....</div>}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Navbar />
+          {children}
+          <Footer />
+          <ChatPanel />
+        </body>
+      </html>
+    </Suspense>
+
   );
 }
