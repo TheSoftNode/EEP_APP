@@ -1,5 +1,6 @@
+"use client"
+
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -35,6 +36,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
+import { useParams, useRouter } from 'next/navigation';
 
 // Define schemas for different application types
 const learnerSchema = z.object({
@@ -75,7 +77,7 @@ const businessSchema = z.object({
 
 const ApplicationPage = () => {
     const router = useRouter();
-    const { role } = router.query;
+    const { role } = useParams();
     const [activeRole, setActiveRole] = useState<'learner' | 'business'>(
         (role as 'learner' | 'business') || 'learner'
     );
