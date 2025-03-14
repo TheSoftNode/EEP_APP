@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/EEP/Header/Header";
 import ChatPanel from "@/components/EEP/Landing/ChatPanel";
-import Footer from "@/components/EEP/Footer/Footer";
+import { Navbar } from "@/components/EEP_V2/Navbar/Navbar";
+import { Footer } from "@/components/EEP_V2/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
+        <Navbar />
         {children}
         <Footer />
         <ChatPanel />
